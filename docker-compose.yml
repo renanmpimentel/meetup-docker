@@ -1,0 +1,18 @@
+web:
+  image: bylexus/apache-php56
+  volumes:
+    - ./my-app:/var/www
+  ports:
+    - "8080:80"
+  links:
+    - "database"
+
+database:
+  image: mysql:5.7
+  ports:
+    - '3306:3306'
+  environment:
+    - MYSQL_USER=user
+    - MYSQL_PASSWORD=passwd
+    - MYSQL_DATABASE=my_database
+    - MYSQL_ROOT_PASSWORD=root
